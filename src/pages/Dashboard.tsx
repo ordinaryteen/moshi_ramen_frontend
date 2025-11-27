@@ -6,6 +6,7 @@ import type { Product, CartItem } from '../types';
 import clsx from 'clsx';
 
 export default function Dashboard() {
+  const [isProcessing, setIsProcessing] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -62,6 +63,36 @@ export default function Dashboard() {
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleCheckout = async () => {
+    if (cart.length === 0) return;
+    setIsProcessing(true);
+
+    try {
+      // 1. Transform Cart ke Format Backend
+      const payload = {
+        // Hardcode dulu atau bikin input text buat nama meja
+        bill_name: "Table 10 (Demo Pitching)", 
+        // Mapping: Ambil cuma product_id dan quantity
+        items: cart.map(item => ({
+          product_id: item.id,
+          quantity: item.qty
+        }))
+      };
+
+      // 2. Tembak API
+      await api.post('/api/v1/orders', payload);
+
+      // 3. Sukses!
+      alert("✅ Order Berhasil Masuk ke Dapur!");
+      setCart([]); // Kosongkan keranjang
+    } catch (err) {
+      console.error("Gagal checkout:", err);
+      alert("❌ Gagal memproses order. Cek console.");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   if (loading) return <div className="h-screen flex items-center justify-center text-primary font-serif text-xl">Loading Menu...</div>;
@@ -152,10 +183,11 @@ export default function Dashboard() {
           </div>
 
           <button 
-            disabled={cart.length === 0}
+            onClick={handleCheckout} // <--- Pasang fungsi di sini
+            disabled={cart.length === 0 || isProcessing} // <--- Disable pas lagi loading
             className="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-4 rounded-DEFAULT font-serif font-bold uppercase tracking-widest text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
-            Process Payment
+            {isProcessing ? 'Processing...' : 'Process Payment'}
           </button>
         </div>
       </div>
