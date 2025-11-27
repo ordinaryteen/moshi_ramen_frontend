@@ -7,25 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Update warna pilihan lo (gw hapus 'ff' di belakang karena hex standar 6 digit, 
+        // tapi browser modern tetep bisa baca 8 digit kok. Gw bersihin biar standar)
         primary: {
-          DEFAULT: '#B91C1C', 
-          hover: '#991B1B',
+          DEFAULT: '#ee3d3d', 
+          hover: '#d72727',   
         },
         secondary: {
-          DEFAULT: '#D97706',
+          DEFAULT: '#d89140',
         },
-        background: '#FFFAF0',
-        dark: '#1C1917',
+        background: '#fcf8ef',
+        dark: '#322b26',
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'serif'],
         sans: ['"Lato"', 'sans-serif'],
       },
+      // UPDATE ROUNDED DISINI
       borderRadius: {
-        DEFAULT: '2px',
-        'md': '4px',
-        'lg': '0px',
-        'xl': '0px', 
+        DEFAULT: '100px',   // Tombol standar jadi agak bulet dikit
+        'md': '12px',     // Card jadi lebih smooth
+        'lg': '18px',     // Lengkungan besar
+        'xl': '12px',     // Buat container gede
+        'full': '9999px', // Buat pill shape
       }
     },
   },

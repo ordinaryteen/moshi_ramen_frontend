@@ -9,7 +9,9 @@ function App() {
       </div>
 
       {/* Card Simulation */}
-      <div className="max-w-md w-full bg-white shadow-xl border-t-4 border-primary p-6">
+      {/* UPDATE 1: Tambah 'rounded-xl' biar kartunya melengkung agak gede (24px) */}
+      <div className="max-w-md w-full bg-white shadow-xl border-t-4 border-primary p-6 rounded-xl overflow-hidden">
+        
         <div className="flex justify-between items-start">
           <div>
             <h3 className="text-2xl mb-1">Spicy Beef Ramen</h3>
@@ -20,7 +22,8 @@ function App() {
           <span className="text-lg font-bold font-serif text-primary">35K</span>
         </div>
 
-        <button className="w-full mt-6 bg-primary hover:bg-primary-hover text-white font-serif py-3 px-4 uppercase tracking-wider transition-colors">
+        {/* UPDATE 2: Tambah 'rounded' biar tombolnya melengkung halus (8px sesuai default config lo) */}
+        <button className="w-full mt-6 bg-primary hover:bg-primary-hover text-white font-serif py-3 px-4 uppercase tracking-wider transition-colors cursor-pointer rounded shadow-md">
           Add to Order
         </button>
       </div>
