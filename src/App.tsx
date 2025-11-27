@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen p-8 flex flex-col items-center justify-center gap-8">
+      
+      {/* Header Section */}
+      <div className="text-center space-y-2">
+        <h1 className="text-5xl tracking-wide">Hari-Hari</h1>
+        <p className="text-secondary font-serif italic text-xl">Resto & Snack</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+
+      {/* Card Simulation */}
+      <div className="max-w-md w-full bg-white shadow-xl border-t-4 border-primary p-6">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="text-2xl mb-1">Spicy Beef Ramen</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Resep klasik dengan kuah kaldu sapi yang dimasak 12 jam.
+            </p>
+          </div>
+          <span className="text-lg font-bold font-serif text-primary">35K</span>
+        </div>
+
+        <button className="w-full mt-6 bg-primary hover:bg-primary-hover text-white font-serif py-3 px-4 uppercase tracking-wider transition-colors">
+          Add to Order
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
 
