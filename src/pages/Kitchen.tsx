@@ -67,7 +67,7 @@ export default function Kitchen() {
       <header className="flex justify-between items-center mb-8 border-b border-gray-700 pb-4">
         <div>
           <h1 className="text-3xl font-bold text-primary tracking-wide">KITCHEN MONITOR</h1>
-          <p className="text-gray-400 text-sm font-mono">Live Order Feed</p>
+          <p className="text-gray-400 text-sm font-mono">Live Order Feed</p>  
         </div>
         <div className="text-xs font-mono bg-black px-3 py-1 rounded border border-gray-700 text-green-400">
           WS: {connectionStatus}
@@ -79,7 +79,7 @@ export default function Kitchen() {
         {orders.length === 0 && (
           <div className="col-span-full text-center py-20 text-gray-600">
             <span className="text-6xl block mb-4">👨‍🍳</span>
-            <p className="text-2xl font-serif">Menunggu Pesanan...</p>
+            <p className="text-2xl font-sans font-bold text-gray-300">MENUNGGU PESANAN...</p>
             <p className="text-sm">Pastikan Kasir melakukan Checkout.</p>
           </div>
         )}
