@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../lib/api';
-import { KitchenOrder, OrderStatus } from '../types';
+import type { KitchenOrder, OrderStatus } from '../types';
 import clsx from 'clsx';
 
 export default function Kitchen() {
