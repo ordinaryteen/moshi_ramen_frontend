@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import api from '../lib/api';
 import { useAuthStore } from '../store/authStore';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -11,6 +11,7 @@ export default function Login() {
   
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
+  const location = useLocation(); // 2. Hook buat baca state
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +19,6 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // TRICKY PART: FastAPI OAuth2 butuh Form Data, bukan JSON!
       const formData = new URLSearchParams();
       formData.append('username', username);
       formData.append('password', password);
@@ -27,9 +27,12 @@ export default function Login() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       });
 
-      // Kalau sukses, simpan token & pindah ke dashboard
       login(response.data.access_token);
-      navigate('/dashboard'); 
+      
+      // 3. LOGIC PINTAR:
+      // Cek apakah ada 'state.from'? Kalau ada, ke sana. Kalau null, ke Dashboard.
+      const from = location.state?.from?.pathname || '/dashboard';
+      navigate(from, { replace: true });
       
     } catch (err: any) {
       console.error(err);

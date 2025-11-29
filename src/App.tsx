@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'; // 
-
+import Dashboard from './pages/Dashboard';
+import Kitchen from './pages/Kitchen';
+import ProtectedRoute from './components/ProtectedRoute'; // <--- Import Satpam
 
 function App() {
   return (
@@ -9,10 +10,21 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         
-        {/* Sekarang dia manggil Dashboard asli dari file import */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* HALAMAN YANG DIPROTEKSI */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/kitchen" element={
+          <ProtectedRoute>
+            <Kitchen />
+          </ProtectedRoute>
+        } />
 
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {/* Redirect default ke Dashboard (yang nanti bakal dicek satpam) */}
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
   )
