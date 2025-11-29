@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.PROD 
+  ? 'https://moshi-ramen-backend-a4w6.onrender.com' 
+  : 'http://127.0.0.1:8000';
+
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000', 
+  baseURL: BASE_URL,
 });
 
 // 2. Interceptor (Middleware Frontend)
