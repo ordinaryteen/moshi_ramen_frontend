@@ -149,10 +149,18 @@ export default function Dashboard() {
           <div className="p-6 bg-gray-50 border-t border-gray-200 space-y-3 pb-safe">
             <div className="flex justify-between text-sm"><span>Subtotal</span><span>{formatRupiah(subTotal)}</span></div>
             <div className="flex justify-between text-sm"><span>Tax (15%)</span><span>{formatRupiah(tax)}</span></div>
-            <div className="flex justify-between text-xl font-serif font-bold pt-3 border-t"><span>Total</span><span>{formatRupiah(grandTotal)}</span></div>
-            <button onClick={handleCheckout} disabled={cart.length === 0 || isProcessing} className="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-4 rounded-DEFAULT font-serif font-bold uppercase tracking-widest text-lg shadow-lg disabled:opacity-50 transition-all">
-              {isProcessing ? 'Processing...' : 'Process Payment'}
-            </button>
+            <div className="flex justify-between text-xl font-bold pt-3 border-t"><span>Total</span><span>{formatRupiah(grandTotal)}</span></div>
+            <div className="flex justify-center">
+              <button 
+                onClick={handleCheckout}
+                disabled={cart.length === 0 || isProcessing}
+                // Hapus mx-auto karena sekarang Flexbox yang mengaturnya
+                // Tombol tidak perlu w-full lagi, hanya lebar yang diinginkan
+                className="w-[260px] mt-4 bg-primary hover:bg-primary-hover text-white py-4 rounded-full font-sans font-bold uppercase tracking-widest text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                {isProcessing ? 'Processing...' : 'Process Payment'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
