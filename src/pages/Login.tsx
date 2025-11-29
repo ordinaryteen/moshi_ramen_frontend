@@ -45,7 +45,7 @@ export default function Login() {
         
         {/* Header Logo */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl text-primary tracking-wide mb-1">Hari-Hari</h1>
+          <h1 className="text-4xl text-primary tracking-wide mb-1">Moshi Ramen</h1>
           <p className="text-secondary font-serif italic">Staff Portal</p>
         </div>
 
