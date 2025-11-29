@@ -66,8 +66,8 @@ export default function Kitchen() {
     <div className="min-h-screen bg-gray-900 text-white p-6 font-sans">
       <header className="flex justify-between items-center mb-8 border-b border-gray-700 pb-4">
         <div>
-          <h1 className="text-3xl font-serif text-primary tracking-wide">Kitchen Display</h1>
-          <p className="text-gray-400 text-sm italic">Real-time Orders</p>
+          <h1 className="text-3xl font-bold text-primary tracking-wide">KITCHEN MONITOR</h1>
+          <p className="text-gray-400 text-sm font-mono">Live Order Feed</p>
         </div>
         <div className="text-xs font-mono bg-black px-3 py-1 rounded border border-gray-700 text-green-400">
           WS: {connectionStatus}
